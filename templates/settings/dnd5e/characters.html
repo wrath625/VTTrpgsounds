@@ -1,0 +1,48 @@
+<div class='settings-list'>
+	<p>
+		This allows you to change a PC's default spell incantation sound set between male, female, and nonvocal.  The default is male for a non-added character.
+	</p>
+	{{#each settings.fallbackSettings.characters as |character idx|}}
+		<div class='flexrow character-entry' data-idx="{{idx}}">
+			<div class='flexcol'>
+				<div class='form-group'>
+					<label for="fallbackSettings.characters.{{idx}}.target">
+						Character Name
+					</label>
+					<div class='form-fields'>
+						<input
+							type='text'
+							name="fallbackSettings.characters.{{idx}}.target"
+							value="{{lookup (lookup @root.settings.fallbackSettings.characters idx) 'target'}}"
+						/>
+					</div>
+				</div>
+				<div class='form-group'>
+					<label for="fallbackSettings.characters.{{idx}}.preset">
+						Character Incantation Set
+					</label>
+					<select name="fallbackSettings.characters.{{idx}}.preset" data-dtype='String'>
+						{{#select (lookup (lookup @root.settings.fallbackSettings.characters idx) 'preset')}}
+							
+							{{#each @root.presets as |preset|}}
+								<option value="{{preset.name}}">
+									{{preset.name}}
+								</option>
+							{{/each}}
+						{{/select}}
+					</select>
+				</div>
+			</div>
+			<div class='flexcol remove-character-wrapper'>
+				<button class='remove-character' data-idx="{{idx}}">
+					<i class='far fa-trash-alt'></i>
+				</button>
+			</div>
+		</div>
+	{{/each}}
+</div>
+<footer class='sheet-footer flexrow add-character-wrapper'>
+	<button class='add-character'>
+		<i class='far fa-plus-square'></i>Add Character
+	</button>
+</footer>

@@ -1,0 +1,183 @@
+<div class='settings-list'>
+	<p>
+		This allows you to change an item's (weapon or spell) sound sets for each action type (use, attack, damage, healing, etc.).
+	</p>
+	{{#each settings.fallbackSettings.overrides as |override idx|}}
+		<div class='flexrow override-entry' data-idx="{{idx}}">
+			<div class='flexcol'>
+				<div class='form-group'>
+					<label for="fallbackSettings.overrides.{{idx}}.target">
+						Target
+					</label>
+					<div class='form-fields'>
+						<input
+							type='text'
+							name="fallbackSettings.overrides.{{idx}}.target"
+							value="{{lookup (lookup @root.settings.fallbackSettings.overrides idx) 'target'}}"
+						/>
+					</div>
+				</div>
+				
+				<div class='flexrow sound-entry' data-idx="itemUse">
+					<div class='flexcol'>
+						<h3>itemUse</h3>
+					</div>
+					<div class='flexcol add-sound-wrapper'>
+						<button class='add-override-sound' data-idx="{{idx}}" data-roll-type="itemUse">
+							<i class='far fa-plus-square'></i>
+						</button>
+					</div>
+				</div>
+				{{#each override.itemUse}}
+				<div class='flexrow sound-entry' data-idx="{{@index}}">
+					<div class='form-group'>
+						<div class='form-fields'>
+							{{
+								filePicker
+								target=(concat (concat (concat 'fallbackSettings.overrides.' idx) '.') itemUse)
+								type='sound'
+							}}
+							<input 
+								class='sound'
+								type='text'
+								name="fallbackSettings.overrides.{{idx}}.itemUse"
+								placeholder='path/sound.ogg'
+								value="{{this}}"
+								data-dtype='Array' 
+							/>
+						</div>
+					</div>
+					<div class='flexcol remove-sound-wrapper'>
+						<button class='remove-sound' data-idx="{{@index}}">
+							<i class='far fa-trash-alt'></i>
+						</button>
+					</div>
+				</div>
+				{{/each}}
+
+				<div class='flexrow sound-entry' data-idx="attackRoll">
+					<div class='flexcol'>
+						<h3>attackRoll</h3>
+					</div>
+					<div class='flexcol add-sound-wrapper'>
+						<button class='add-override-sound' data-idx="{{idx}}" data-roll-type="attackRoll">
+							<i class='far fa-plus-square'></i>
+						</button>
+					</div>
+				</div>
+				{{#each override.attackRoll}}
+				<div class='flexrow sound-entry' data-idx="{{@index}}">
+					<div class='form-group'>
+						<div class='form-fields'>
+							{{
+								filePicker
+								target=(concat (concat (concat 'fallbackSettings.overrides.' idx) '.') attackRoll)
+								type='sound'
+							}}
+							<input 
+								class='sound'
+								type='text'
+								name="fallbackSettings.overrides.{{idx}}.attackRoll"
+								placeholder='path/sound.ogg'
+								value="{{this}}"
+								data-dtype='Array' 
+							/>
+						</div>
+					</div>
+					<div class='flexcol remove-sound-wrapper'>
+						<button class='remove-sound' data-idx="{{@index}}">
+							<i class='far fa-trash-alt'></i>
+						</button>
+					</div>
+				</div>
+				{{/each}}
+
+				<div class='flexrow sound-entry' data-idx="damageRoll">
+					<div class='flexcol'>
+						<h3>damageRoll</h3>
+					</div>
+					<div class='flexcol add-sound-wrapper'>
+						<button class='add-override-sound' data-idx="{{idx}}" data-roll-type="damageRoll">
+							<i class='far fa-plus-square'></i>
+						</button>
+					</div>
+				</div>
+				{{#each override.damageRoll}}
+				<div class='flexrow sound-entry' data-idx="{{@index}}">
+					<div class='form-group'>
+						<div class='form-fields'>
+							{{
+								filePicker
+								target=(concat (concat (concat 'fallbackSettings.overrides.' idx) '.') damageRoll)
+								type='sound'
+							}}
+							<input 
+								class='sound'
+								type='text'
+								name="fallbackSettings.overrides.{{idx}}.damageRoll"
+								placeholder='path/sound.ogg'
+								value="{{this}}"
+								data-dtype='Array' 
+							/>
+						</div>
+					</div>
+					<div class='flexcol remove-sound-wrapper'>
+						<button class='remove-sound' data-idx="{{@index}}">
+							<i class='far fa-trash-alt'></i>
+						</button>
+					</div>
+				</div>
+				{{/each}}
+
+
+				<div class='flexrow sound-entry' data-idx="healing">
+					<div class='flexcol'>
+						<h3>healing</h3>
+					</div>
+					<div class='flexcol add-sound-wrapper'>
+						<button class='add-override-sound' data-idx="{{idx}}" data-roll-type="healing">
+							<i class='far fa-plus-square'></i>
+						</button>
+					</div>
+				</div>
+				{{#each override.healing}}
+				<div class='flexrow sound-entry' data-idx="{{@index}}">
+					<div class='form-group'>
+						<div class='form-fields'>
+							{{
+								filePicker
+								target=(concat (concat (concat 'fallbackSettings.overrides.' idx) '.') healing)
+								type='sound'
+							}}
+							<input 
+								class='sound'
+								type='text'
+								name="fallbackSettings.overrides.{{idx}}.healing"
+								placeholder='path/sound.ogg'
+								value="{{this}}"
+								data-dtype='Array'
+							/>
+						</div>
+					</div>
+					<div class='flexcol remove-sound-wrapper'>
+						<button class='remove-sound' data-idx="{{@index}}">
+							<i class='far fa-trash-alt'></i>
+						</button>
+					</div>
+				</div>
+				{{/each}}
+				
+			</div>
+			<div class='flexcol remove-override-wrapper'>
+				<button class='remove-override' data-idx="{{idx}}">
+					<i class='far fa-trash-alt'></i>
+				</button>
+			</div>
+		</div>
+	{{/each}}
+</div>
+<footer class='sheet-footer flexrow add-override-wrapper'>
+	<button class='add-override'>
+		<i class='far fa-plus-square'></i>Add Item Override
+	</button>
+</footer>

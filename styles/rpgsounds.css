@@ -1,0 +1,59 @@
+.rpgsounds.settings nav.tabs {
+	flex: 0 0 32px;
+	line-height: 32px;
+	font-size: 16px;
+	border-bottom: 1px solid #000;
+}
+
+.rpgsounds.settings section.content {
+	border-top: 1px solid #b5b3a4;
+}
+
+.rpgsounds.settings section.content .settings-list {
+	max-height: calc(100vh - 150px);
+	overflow-y: auto;
+	padding-right: 0.5em;
+}
+
+.rpgsounds.settings div.override-entry {
+	padding: 0.5em 0;
+	border-top: 1px solid #b5b3a4;
+}
+
+.rpgsounds.settings div.remove-override-wrapper {
+	flex: 0;
+	margin-left: 0.5em;
+}
+
+.rpgsounds.settings footer.add-override-wrapper {
+	margin-bottom: 0.5em;
+}
+
+.rpgsounds.settings div.character-entry {
+	padding: 0.5em 0;
+	border-top: 1px solid #b5b3a4;
+}
+
+.rpgsounds.settings div.remove-character-wrapper {
+	flex: 0;
+	margin-left: 0.5em;
+}
+
+.rpgsounds.settings footer.add-character-wrapper {
+	margin-bottom: 0.5em;
+}
+
+.rpgsounds.settings div.sound-entry {
+	padding: 0.5em 0;
+	border-top: 1px solid #b5b3a4;
+}
+
+.rpgsounds.settings div.remove-sound-wrapper {
+	flex: 0;
+	margin-left: 0.5em;
+}
+
+.rpgsounds.settings div.add-sound-wrapper {
+	flex: 0;
+	margin-left: 0.5em;
+}

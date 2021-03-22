@@ -1,0 +1,16 @@
+CAS_M01.ogg //psychic damage? not useful
+CAS_M02.ogg //lightning attack
+CAS_M03.ogg //necro damage
+CAS_M04.ogg //thunder attack/damage
+CAS_M05.ogg //radiant attack not useful
+CAS_M06.ogg //force attack? not useful
+CAS_M07.ogg //fire
+CAS_M08.ogg //force damage
+CAS_P01.ogg //cold damage
+CAS_P02.ogg //acid damage
+CAS_P03.ogg //force damage
+CAS_P04.ogg //enchant drop not useful
+CAS_P05.ogg //psychic damage not useful
+CAS_P06.ogg //force radiant damage not useful
+CAS_P07.ogg //necro damage
+CAS_P08.ogg //lightning attack

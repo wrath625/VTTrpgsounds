@@ -1,0 +1,143 @@
+<div class='settings-list'>
+	<h1>Spell Schools</h1>
+	{{#each settings.fallbackSettings.categories.spellSchools as |dmgType dmgKey|}}
+	<h2>
+		{{dmgKey}}
+	</h2>
+	{{#each dmgType as |value rollKey|}}
+	<div class='flexrow sound-entry' data-idx="{{rollKey}}">
+		<div class='flexcol'>
+			<h3>{{rollKey}}</h3>
+		</div>
+		<div class='flexcol add-sound-wrapper'>
+			<button class='add-sound' data-idx="{{rollKey}}" data-parent-idx={{dmgKey}}>
+				<i class='far fa-plus-square'></i>
+			</button>
+		</div>
+	</div>
+	{{#each value}}
+	<div class='flexrow sound-entry' data-idx="{{@index}}">
+		
+			<div class='form-group'>
+				<div class='form-fields'>
+					{{
+						filePicker
+						target=(concat (concat (concat (concat 'fallbackSettings.categories.spellSchools.' dmgKey) '.') rollKey) [@index])
+						type='sound'
+					}}
+					<input 
+						class='sound'
+						type='text'
+						name="fallbackSettings.categories.spellSchools.{{dmgKey}}.{{rollKey}}{{[@index]}}"
+						placeholder='path/sound.ogg'
+						value="{{this}}"
+						data-dtype='Array' 
+					/>
+				</div>
+			</div>
+		
+		<div class='flexcol remove-sound-wrapper'>
+			<button class='remove-sound' data-idx="{{@index}}">
+				<i class='far fa-trash-alt'></i>
+			</button>
+		</div>
+	</div>
+	{{/each}}
+	{{/each}}
+	{{/each}}
+
+	<h1>Damage Types</h1>
+	{{#each settings.fallbackSettings.categories.damageTypes as |dmgType dmgKey|}}
+	<h2>
+		{{dmgKey}}
+	</h2>
+	{{#each dmgType as |value rollKey|}}
+	<div class='flexrow sound-entry' data-idx="{{rollKey}}">
+		<div class='flexcol'>
+			<h3>{{rollKey}}</h3>
+		</div>
+		<div class='flexcol add-sound-wrapper'>
+			<button class='add-sound' data-idx="{{rollKey}}" data-parent-idx={{dmgKey}}>
+				<i class='far fa-plus-square'></i>
+			</button>
+		</div>
+	</div>
+	{{#each value}}
+	<div class='flexrow sound-entry' data-idx="{{@index}}">
+		
+			<div class='form-group'>
+				<div class='form-fields'>
+					{{
+						filePicker
+						target=(concat (concat (concat (concat 'fallbackSettings.categories.damageTypes.' dmgKey) '.') rollKey) [@index])
+						type='sound'
+					}}
+					<input 
+						class='sound'
+						type='text'
+						name="fallbackSettings.categories.damageTypes.{{dmgKey}}.{{rollKey}}{{[@index]}}"
+						placeholder='path/sound.ogg'
+						value="{{this}}"
+						data-dtype='Array' 
+					/>
+				</div>
+			</div>
+		
+		<div class='flexcol remove-sound-wrapper'>
+			<button class='remove-sound' data-idx="{{@index}}">
+				<i class='far fa-trash-alt'></i>
+			</button>
+		</div>
+	</div>
+	{{/each}}
+	{{/each}}
+	{{/each}}
+
+	<h1>Weapon Types</h1>
+	{{#each settings.fallbackSettings.categories.weaponTypes as |dmgType dmgKey|}}
+	<h2>
+		{{dmgKey}}
+	</h2>
+	{{#each dmgType as |value rollKey|}}
+	<div class='flexrow sound-entry' data-idx="{{rollKey}}">
+		<div class='flexcol'>
+			<h3>{{rollKey}}</h3>
+		</div>
+		<div class='flexcol add-sound-wrapper'>
+			<button class='add-sound' data-idx="{{rollKey}}" data-parent-idx={{dmgKey}}>
+				<i class='far fa-plus-square'></i>
+			</button>
+		</div>
+	</div>
+	{{#each value}}
+	<div class='flexrow sound-entry' data-idx="{{@index}}">
+		
+			<div class='form-group'>
+				<div class='form-fields'>
+					{{
+						filePicker
+						target=(concat (concat (concat (concat 'fallbackSettings.categories.weaponTypes.' dmgKey) '.') rollKey) [@index])
+						type='sound'
+					}}
+					<input 
+						class='sound'
+						type='text'
+						name="fallbackSettings.categories.weaponTypes.{{dmgKey}}.{{rollKey}}{{[@index]}}"
+						placeholder='path/sound.ogg'
+						value="{{this}}"
+						data-dtype='Array' 
+					/>
+				</div>
+			</div>
+		
+		<div class='flexcol remove-sound-wrapper'>
+			<button class='remove-sound' data-idx="{{@index}}">
+				<i class='far fa-trash-alt'></i>
+			</button>
+		</div>
+	</div>
+	{{/each}}
+	{{/each}}
+	{{/each}}
+
+</div>

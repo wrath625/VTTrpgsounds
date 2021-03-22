@@ -1,0 +1,48 @@
+<form class="flexcol" autocomplete='off'>
+	<nav class='sheet-tabs tabs' data-group="sections">
+		<a class='item' data-tab='categories'>
+			Fallbacks
+		</a>
+		<a class='item' data-tab='overrides'>
+			Overrides
+		</a>
+		<a class='item' data-tab='characters'>
+			Characters
+		</a>
+	</nav>
+
+	{{#*inline 'unsupported'}}
+		<h1>
+			{{system.title}}
+		</h1>
+		<p>
+			Unsupported system
+		</p>
+		<p>
+			<a href='https://github.com/wrath625/rpg-sounds' target='_blank'>
+				https://github.com/wrath625/rpg-sounds
+			</a>
+		</p>
+	{{/inline}}
+
+	<section class='content'>
+		<div class='tab' data-tab='categories' data-group='sections'>
+			{{#> (concat (concat 'modules/rpgsounds/templates/settings/' system.id) '/categories.html')}}
+				{{> unsupported}}
+			{{/undefined}}
+		</div>
+		<div class='tab' data-tab='overrides' data-group='sections'>
+			{{#> (concat (concat 'modules/rpgsounds/templates/settings/' system.id) '/overrides.html')}}
+				{{> unsupported}}
+			{{/undefined}}
+		</div>
+		<div class='tab' data-tab='characters' data-group='sections'>
+			{{#> (concat (concat 'modules/rpgsounds/templates/settings/' system.id) '/characters.html')}}
+				{{> unsupported}}
+			{{/undefined}}
+		</div>
+	</section>
+	<footer class='sheet-footer flexrow'>
+		<button type='submit' name='submit' value='1'><i class='far fa-save'></i>{{submitText}}</button>
+	</footer>
+</form>
