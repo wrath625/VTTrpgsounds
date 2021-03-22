@@ -1,5 +1,7 @@
 import { RPGSoundsSettings } from "./scripts/settings.js";
 
+let playedIDs = []
+
 Hooks.once("init", () => {
     // Extracted from https://github.com/leapfrogtechnology/just-handlebars-helpers/
     Handlebars.registerHelper('concat', function (...params) {
@@ -20,33 +22,37 @@ Hooks.once('ready', function() {
     RPGSoundsSettings.configureFallback(game.settings.get('rpgsounds', 'fallbacksEnabled'));
 
     Hooks.on("renderChatMessage", (message, html, data) => {
+        if (playedIDs.includes(message.data._id)) return
         let rollType = determineRollType(message)
         if (rollType) {
             let actor = game.actors.get(message.data.speaker.actor)
             let user = message.user
             let ownedItem = actor.items.entries.find(entry => entry.name === message.data.flavor.split("-")[0].trim())
-            let itemName = ownedItem.data.name
+            let itemName = ownedItem._data.name
             let override = getOverride(itemName)
             let soundFiles, damageType = null
             let spellSchool = ownedItem.labels.school
             let spellComponents = ownedItem.labels.components
-            let weaponType = ownedItem.data.data.weaponType //simpleR simple M martialR martialM etc
-            let weaponCategory = determineItem(ownedItem.data.name)
+            let weaponType = ownedItem._data.data.weaponType //simpleR simple M martialR martialM etc
+            let weaponCategory = determineItem(ownedItem._data.name)
             let voice = "male"
             let settings = game.settings.get('rpgsounds', 'fallbackSettings')
             let enableFallbacks = game.settings.get('rpgsounds', 'fallbacksEnabled')
 
             if (spellSchool) spellSchool = spellSchool.toLowerCase()
             if (weaponType) weaponType = weaponType.toLowerCase()
-            if (ownedItem.data.damage && ownedItem.data.data.damage.parts.length > 0) {
-                damageType = ownedItem.data.data.damage.parts[0][1] // parts = ['3d10', 'necrotic'] or ["1d4 + @mod + 2 + @item.level", "healing"]
+
+            if (ownedItem._data.data.damage && ownedItem._data.data.damage.parts.length > 0) {
+                damageType = damageType = ownedItem._data.data.damage.parts[0][1] // parts = ['3d10', 'necrotic'] or ["1d4 + @mod + 2 + @item.level", "healing"]
             }
+            if (damageType) damageType = damageType.toLowerCase()
+
             // See if there is a voice preset
             for (var character in settings.characters) {
                 if (actor.settings.name === settings.characters[character].target)
                     voice = settings.characters[character].preset
             }
-            
+
             switch(rollType) {
                 case "itemUse":
                     if (enableFallbacks) {
@@ -156,7 +162,7 @@ Hooks.once('ready', function() {
             let max_distance = game.settings.get("rpgsounds", "maxDistance")
             let volume = max_volume - max_volume/max_distance * distance
 
-            if (soundFiles && soundFiles.length > 0) play(soundFiles, volume)
+            if (soundFiles && soundFiles.length > 0) play(soundFiles, volume, message.data._id)
         }
     });
     
@@ -277,11 +283,12 @@ function determineItem(name) {
     }
 }
 
-function play(sounds, volume = null) {
+function play(sounds, volume = null, id) {
+    playedIDs.push(id)
     let sound = random_sound(sounds)
-    console.log(sound)
     volume = (volume || game.settings.get("core", "globalAmbientVolume"));
     AudioHelper.play({src: sound, volume: volume, autoplay: true, loop: false}, true);
+    
 }
 
 function random_sound(sounds) {
