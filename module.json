@@ -2,7 +2,7 @@
 	"name": "rpgsounds",
 	"title": "5e Combat Sounds",
 	"description": "Open a video clip on every participants screen.",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"author": "wrath625",
 	"esmodules": [
 		"rpgsounds.js"

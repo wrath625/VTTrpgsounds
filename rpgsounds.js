@@ -173,8 +173,8 @@ function determineRollType(message) {
             return "attackRoll"
         case String(flavor.match(/^.*Damage Roll.*/)):
             return "damageRoll"
-        case String(flavor.match(/^.*Healing.*/)):
-            return "healing"
+        // case String(flavor.match(/^.*Healing.*/)):
+        //     return "healing"
         default:
             return "itemUse"
     }
