@@ -26,6 +26,7 @@ Hooks.once('ready', function() {
         if (game.user._data._id != message.user._data._id) {
             return
         }
+        console.log(message)
         if (playedIDs.includes(message.data._id)) return
         playedIDs.push(message.data._id)
         let rollType = determineRollType(message)
@@ -54,7 +55,7 @@ Hooks.once('ready', function() {
 
             // See if there is a voice preset
             for (var character in settings.characters) {
-                if (actor.settings.name === settings.characters[character].target)
+                if (actor._data.name === settings.characters[character].target)
                     voice = settings.characters[character].preset
             }
 
@@ -110,6 +111,7 @@ Hooks.once('ready', function() {
                         soundFiles = settings.overrides[override].attackRoll
                     }
                     break;
+                case "healing":
                 case "damageRoll":
                     if (enableFallbacks) {
                         if (spellSchool && damageType) {
@@ -126,17 +128,6 @@ Hooks.once('ready', function() {
                     // Use a custom sound definition defined in overrides
                     if (override != null && settings.overrides[override].damageRoll) {
                         soundFiles = settings.overrides[override].damageRoll
-                    }
-                    break;
-                case "healing":
-                    if (enableFallbacks) {
-                        if (settings.categories.damageTypes.healing.healing)
-                            soundFiles = settings.categories.damageTypes.healing.healing
-                    }
-
-                    // Use a custom sound definition defined in overrides
-                    if (override != null && settings.overrides[override].healing) {
-                        soundFiles = settings.overrides[override].healing
                     }
                     break;
             }
@@ -174,7 +165,7 @@ Hooks.once('ready', function() {
 });
 
 function determineRollType(message) {
-    let flavor = message.data.flavor
+    let flavor = message._data.flavor
     switch (flavor) {
         case undefined:
             return null

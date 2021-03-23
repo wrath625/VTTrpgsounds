@@ -35,7 +35,7 @@ export class SettingsDND5E {
 					itemUse: [
                         "modules/rpgsounds/sounds/chant/bg2/vs_chant_necr_lm.ogg"
                     ],
-                    healing: [
+                    damageRoll: [
                         "modules/rpgsounds/sounds/spell/nwn/sim_healdead.ogg"
                     ]
 				},
@@ -44,7 +44,7 @@ export class SettingsDND5E {
 					itemUse: [
                         "modules/rpgsounds/sounds/chant/bg2/vs_chant_necr_lm.ogg"
                     ],
-                    healing: [
+                    damageRoll: [
                         "modules/rpgsounds/sounds/spell/nwn/sim_healdead.ogg"
                     ]
 				},
@@ -53,7 +53,7 @@ export class SettingsDND5E {
 					itemUse: [
                         "modules/rpgsounds/sounds/chant/bg2/vs_chant_necr_hm.ogg"
                     ],
-                    healing: [
+                    damageRoll: [
                         "modules/rpgsounds/sounds/spell/nwn/sim_healdead.ogg"
                     ]
 				},
@@ -62,7 +62,7 @@ export class SettingsDND5E {
 					itemUse: [
                         "modules/rpgsounds/sounds/chant/bg2/vs_chant_necr_hm.ogg"
                     ],
-                    healing: [
+                    damageRoll: [
                         "modules/rpgsounds/sounds/spell/nwn/sim_healdead.ogg"
                     ]
 				},
@@ -85,7 +85,7 @@ export class SettingsDND5E {
                         "modules/rpgsounds/sounds/spell/nwn/sim_healcond.ogg"
                     ]
                 },
-                9: {
+                10: {
                     target: "Channel Divinity (Paladin)",
                     itemUse: [
                         "modules/rpgsounds/sounds/spell/nwn/sim_healcond.ogg"
@@ -303,7 +303,7 @@ export class SettingsDND5E {
             
             defaultConfig.categories.damageTypes['healing'] = {
                 "attackRoll": ["modules/rpgsounds/sounds/spell/nwn/sim_shwngheal01.ogg", "modules/rpgsounds/sounds/spell/nwn/sff_expdholy10.ogg", "modules/rpgsounds/sounds/spell/nwn/sff_expdholy20.ogg", "modules/rpgsounds/sounds/spell/nwn/sff_expdholy30.ogg", "modules/rpgsounds/sounds/spell/nwn/sff_expddholy10.ogg", "modules/rpgsounds/sounds/spell/nwn/sff_expddholy20.ogg", "modules/rpgsounds/sounds/spell/nwn/sff_expddholy30.ogg", "modules/rpgsounds/sounds/spell/nwn/sco_mehanheal02.ogg", "modules/rpgsounds/sounds/spell/nwn/sco_mehanheal03.ogg"],
-                "healing": ["modules/rpgsounds/sounds/spell/nwn/sim_heal01.ogg", "modules/rpgsounds/sounds/spell/nwn/sim_heal02.ogg", "modules/rpgsounds/sounds/spell/nwn/sim_heal03.ogg", "modules/rpgsounds/sounds/spell/nwn/sim_heal04.ogg", "modules/rpgsounds/sounds/spell/nwn/sim_heal05.ogg", "modules/rpgsounds/sounds/spell/nwn/sim_holheal02.ogg", "modules/rpgsounds/sounds/spell/nwn/sim_holheal04.ogg", "modules/rpgsounds/sounds/spell/nwn/sim_holheal06.ogg"],
+                "damageRoll": ["modules/rpgsounds/sounds/spell/nwn/sim_heal01.ogg", "modules/rpgsounds/sounds/spell/nwn/sim_heal02.ogg", "modules/rpgsounds/sounds/spell/nwn/sim_heal03.ogg", "modules/rpgsounds/sounds/spell/nwn/sim_heal04.ogg", "modules/rpgsounds/sounds/spell/nwn/sim_heal05.ogg", "modules/rpgsounds/sounds/spell/nwn/sim_holheal02.ogg", "modules/rpgsounds/sounds/spell/nwn/sim_holheal04.ogg", "modules/rpgsounds/sounds/spell/nwn/sim_holheal06.ogg"],
             }
         });
 
