@@ -20,9 +20,14 @@ Hooks.once('ready', function() {
     // Init here otherwise DND5E school names don't resolve properly..
     RPGSoundsSettings.init();
     RPGSoundsSettings.configureFallback(game.settings.get('rpgsounds', 'fallbacksEnabled'));
+    
 
     Hooks.on("renderChatMessage", (message, html, data) => {
+        if (game.user._data._id != message.user._data._id) {
+            return
+        }
         if (playedIDs.includes(message.data._id)) return
+        playedIDs.push(message.data._id)
         let rollType = determineRollType(message)
         if (rollType) {
             let actor = game.actors.get(message.data.speaker.actor)
@@ -162,7 +167,7 @@ Hooks.once('ready', function() {
             let max_distance = game.settings.get("rpgsounds", "maxDistance")
             let volume = max_volume - max_volume/max_distance * distance
 
-            if (soundFiles && soundFiles.length > 0) play(soundFiles, volume, message.data._id)
+            if (soundFiles && soundFiles.length > 0) play(soundFiles, volume)
         }
     });
     
@@ -283,10 +288,9 @@ function determineItem(name) {
     }
 }
 
-function play(sounds, volume = null, id) {
-    playedIDs.push(id)
+function play(sounds, volume = null) {
     let sound = random_sound(sounds)
-    volume = (volume || game.settings.get("core", "globalAmbientVolume"));
+    volume = (volume || game.settings.get("core", "globalInterfaceVolume"));
     AudioHelper.play({src: sound, volume: volume, autoplay: true, loop: false}, true);
     
 }
