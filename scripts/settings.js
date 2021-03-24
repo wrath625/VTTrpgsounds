@@ -167,6 +167,7 @@ export class RPGSoundsSettings extends FormApplication {
 
     async _onAddOverride(event) {
         event.preventDefault();
+        await this._onSubmit(event, { preventClose: true });
         let idx = 0;
         const entries = event.target.closest('div.tab').querySelectorAll('div.override-entry');
         const last = entries[entries.length - 1];
@@ -187,12 +188,13 @@ export class RPGSoundsSettings extends FormApplication {
             return true;
         }
         el.remove();
-        let test = await this._onSubmit(event, { preventClose: true });
+        await this._onSubmit(event, { preventClose: true });
         this.render();
     }
 
     async _onAddCharacter(event) {
         event.preventDefault();
+        await this._onSubmit(event, { preventClose: true });
         let idx = 0;
         const entries = event.target.closest('div.tab').querySelectorAll('div.character-entry');
         const last = entries[entries.length - 1];
@@ -208,6 +210,7 @@ export class RPGSoundsSettings extends FormApplication {
 
     async _onAddSound(event) {
         event.preventDefault();
+        await this._onSubmit(event, { preventClose: true });
 
         const damageType = event.currentTarget.dataset.parentIdx;
         const rollType = event.currentTarget.dataset.idx;
@@ -223,6 +226,7 @@ export class RPGSoundsSettings extends FormApplication {
 
     async _onAddOverrideSound(event) {
         event.preventDefault();
+        await this._onSubmit(event, { preventClose: true });
 
         const rollType = event.currentTarget.dataset.rollType;
         const idx = event.currentTarget.dataset.idx;

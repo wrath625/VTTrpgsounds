@@ -34,7 +34,7 @@
 						<div class='form-fields'>
 							{{
 								filePicker
-								target=(concat (concat (concat 'fallbackSettings.overrides.' idx) '.') itemUse)
+								target=(concat (concat (concat 'fallbackSettings.overrides.' idx) '.itemUse') [@index])
 								type='sound'
 							}}
 							<input 
@@ -71,7 +71,7 @@
 						<div class='form-fields'>
 							{{
 								filePicker
-								target=(concat (concat (concat 'fallbackSettings.overrides.' idx) '.') attackRoll)
+								target=(concat (concat (concat 'fallbackSettings.overrides.' idx) '.attackRoll') [@index])
 								type='sound'
 							}}
 							<input 
@@ -108,7 +108,7 @@
 						<div class='form-fields'>
 							{{
 								filePicker
-								target=(concat (concat (concat 'fallbackSettings.overrides.' idx) '.') damageRoll)
+								target=(concat (concat (concat 'fallbackSettings.overrides.' idx) '.damageRoll') [@index])
 								type='sound'
 							}}
 							<input 
@@ -146,7 +146,7 @@
 						<div class='form-fields'>
 							{{
 								filePicker
-								target=(concat (concat (concat 'fallbackSettings.overrides.' idx) '.') healing)
+								target=(concat (concat (concat 'fallbackSettings.overrides.' idx) '.healing') [@index])
 								type='sound'
 							}}
 							<input 

@@ -12,8 +12,6 @@ Hooks.once("init", () => {
 
         return params.join('');
     });
-
-
 });
 
 Hooks.once('ready', function() {
@@ -26,12 +24,12 @@ Hooks.once('ready', function() {
         if (game.user._data._id != message.user._data._id) {
             return
         }
-        console.log(message)
         if (playedIDs.includes(message.data._id)) return
         playedIDs.push(message.data._id)
         let rollType = determineRollType(message)
         if (rollType) {
             let actor = game.actors.get(message.data.speaker.actor)
+            if (!actor) return
             let user = message.user
             let ownedItem = actor.items.entries.find(entry => entry.name === message.data.flavor.split("-")[0].trim())
             let itemName = ownedItem._data.name
