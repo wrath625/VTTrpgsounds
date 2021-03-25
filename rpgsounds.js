@@ -70,14 +70,13 @@ Hooks.once('ready', function() {
                                     soundFiles = settings.categories.spellSchools[spellSchool].nonvocal
                             }
                         }
-                    
                         if (weaponType) {
-                            if (weaponCategory in settings.categories.weaponTypes) {
-                                if (settings.categories.weaponTypes[weaponType]) {
-                                    if (settings.categories.weaponTypes[weaponType].itemUse) 
-                                        soundFiles = settings.categories.weaponTypes[weaponType].itemUse
-                                }
-                            }
+                            if (weaponCategory in settings.categories.weaponTypes && settings.categories.weaponTypes[weaponCategory].itemUse) {
+                                soundFiles = settings.categories.weaponTypes[weaponCategory].itemUse
+                            } else {
+                                if (settings.categories.weaponTypes[weaponType].attackRoll)
+                                    soundFiles = settings.categories.weaponTypes[weaponType].itemUse
+                            }                            
                         }
                     }
 
@@ -94,9 +93,8 @@ Hooks.once('ready', function() {
                         }
 
                         if (weaponType) {
-                            if (weaponCategory in settings.categories.weaponTypes) {
-                                if (settings.categories.weaponTypes[weaponCategory].attackRoll)
-                                    soundFiles = settings.categories.weaponTypes[weaponCategory].attackRoll
+                            if (weaponCategory in settings.categories.weaponTypes && settings.categories.weaponTypes[weaponCategory].attackRoll) {
+                                soundFiles = settings.categories.weaponTypes[weaponCategory].attackRoll
                             } else {
                                 if (settings.categories.weaponTypes[weaponType].attackRoll) {
                                     soundFiles = settings.categories.weaponTypes[weaponType].attackRoll
@@ -155,7 +153,6 @@ Hooks.once('ready', function() {
             let max_volume = game.settings.get("core", "globalAmbientVolume")
             let max_distance = game.settings.get("rpgsounds", "maxDistance")
             let volume = max_volume - max_volume/max_distance * distance
-
             if (soundFiles && soundFiles.length > 0) play(soundFiles, volume)
         }
     });
