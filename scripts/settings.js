@@ -212,14 +212,20 @@ export class RPGSoundsSettings extends FormApplication {
         event.preventDefault();
         await this._onSubmit(event, { preventClose: true });
 
-        const damageType = event.currentTarget.dataset.parentIdx;
-        const rollType = event.currentTarget.dataset.idx;
+        const fallback = event.currentTarget.dataset.fallback
+        const damageType = event.currentTarget.dataset.parentIdx
+        const rollType = event.currentTarget.dataset.idx
 
         let data = game.settings.get('rpgsounds', 'fallbackSettings')
 
         let updateData = {}
 
-        updateData[`fallbackSettings.categories.damageTypes.${damageType}.${rollType}`] = [...data.categories.damageTypes[damageType][rollType], ''];
+        let list = []
+        if (data.categories[fallback][damageType][rollType] != null) {
+            list = [...data.categories[fallback][damageType][rollType]]
+        }
+
+        updateData[`fallbackSettings.categories.${fallback}.${damageType}.${rollType}`] = [...list, ''];
         await this._onSubmit(event, { updateData: updateData, preventClose: true });
         this.render();
     }
@@ -228,8 +234,8 @@ export class RPGSoundsSettings extends FormApplication {
         event.preventDefault();
         await this._onSubmit(event, { preventClose: true });
 
-        const rollType = event.currentTarget.dataset.rollType;
-        const idx = event.currentTarget.dataset.idx;
+        const rollType = event.currentTarget.dataset.rollType
+        const idx = event.currentTarget.dataset.idx
 
         let data = game.settings.get('rpgsounds', 'fallbackSettings')
 

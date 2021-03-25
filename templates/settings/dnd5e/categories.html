@@ -10,7 +10,7 @@
 			<h3>{{rollKey}}</h3>
 		</div>
 		<div class='flexcol add-sound-wrapper'>
-			<button class='add-sound' data-idx="{{rollKey}}" data-parent-idx={{dmgKey}}>
+			<button class='add-sound' data-idx="{{rollKey}}" data-parent-idx={{dmgKey}} data-fallback="spellSchools">
 				<i class='far fa-plus-square'></i>
 			</button>
 		</div>
@@ -57,7 +57,7 @@
 			<h3>{{rollKey}}</h3>
 		</div>
 		<div class='flexcol add-sound-wrapper'>
-			<button class='add-sound' data-idx="{{rollKey}}" data-parent-idx={{dmgKey}}>
+			<button class='add-sound' data-idx="{{rollKey}}" data-parent-idx={{dmgKey}} data-fallback="damageTypes">
 				<i class='far fa-plus-square'></i>
 			</button>
 		</div>
@@ -104,7 +104,7 @@
 			<h3>{{rollKey}}</h3>
 		</div>
 		<div class='flexcol add-sound-wrapper'>
-			<button class='add-sound' data-idx="{{rollKey}}" data-parent-idx={{dmgKey}}>
+			<button class='add-sound' data-idx="{{rollKey}}" data-parent-idx={{dmgKey}} data-fallback="weaponTypes">
 				<i class='far fa-plus-square'></i>
 			</button>
 		</div>
@@ -138,6 +138,18 @@
 	</div>
 	{{/each}}
 	{{/each}}
+	{{#unless dmgType.itemUse}}
+	<div class='flexrow sound-entry' data-idx="itemUse">
+		<div class='flexcol'>
+			<h3>itemUse</h3>
+		</div>
+		<div class='flexcol add-sound-wrapper'>
+			<button class='add-sound' data-idx="itemUse" data-parent-idx={{dmgKey}} data-fallback="weaponTypes">
+				<i class='far fa-plus-square'></i>
+			</button>
+		</div>
+	</div>
+	{{/unless}}
 	{{/each}}
 
 </div>

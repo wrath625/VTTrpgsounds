@@ -129,44 +129,6 @@
 				</div>
 				{{/each}}
 
-
-				<div class='flexrow sound-entry' data-idx="healing">
-					<div class='flexcol'>
-						<h3>healing</h3>
-					</div>
-					<div class='flexcol add-sound-wrapper'>
-						<button class='add-override-sound' data-idx="{{idx}}" data-roll-type="healing">
-							<i class='far fa-plus-square'></i>
-						</button>
-					</div>
-				</div>
-				{{#each override.healing}}
-				<div class='flexrow sound-entry' data-idx="{{@index}}">
-					<div class='form-group'>
-						<div class='form-fields'>
-							{{
-								filePicker
-								target=(concat (concat (concat 'fallbackSettings.overrides.' idx) '.healing') [@index])
-								type='sound'
-							}}
-							<input 
-								class='sound'
-								type='text'
-								name="fallbackSettings.overrides.{{idx}}.healing"
-								placeholder='path/sound.ogg'
-								value="{{this}}"
-								data-dtype='Array'
-							/>
-						</div>
-					</div>
-					<div class='flexcol remove-sound-wrapper'>
-						<button class='remove-sound' data-idx="{{@index}}">
-							<i class='far fa-trash-alt'></i>
-						</button>
-					</div>
-				</div>
-				{{/each}}
-				
 			</div>
 			<div class='flexcol remove-override-wrapper'>
 				<button class='remove-override' data-idx="{{idx}}">
